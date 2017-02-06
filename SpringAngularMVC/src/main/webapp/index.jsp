@@ -24,7 +24,6 @@
 				$(this).addClass('active');
 				e.preventDefault();
 			});
-
 		});
 
 		
@@ -83,8 +82,6 @@
                         <input type="button" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Ingresar" ng-click="ingresarUsuario()">
                   </div>
               </form>
-              
-              
               
               <form id="register-form" action="#" method="post" role="form" style="display: none;">
                 <h2>Registro</h2>

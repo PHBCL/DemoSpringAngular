@@ -1,6 +1,7 @@
 package cl.springmvcangular.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.io.UnsupportedEncodingException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 import com.google.gson.Gson;
 
 import cl.springmvcangular.bo.Usuario;
@@ -26,13 +30,17 @@ public class UsuarioRestController {
 	}
 	
 	
-	@RequestMapping(value="SaludarNombre", method= RequestMethod.POST)
-	public ResponseEntity<String> SaludarNombre(@RequestBody UsuarioDTO usuario){
+	@RequestMapping(value="RegistrarUsuario", method= RequestMethod.POST)
+	public ResponseEntity<String> RegistrarUsuario(@RequestBody UsuarioDTO usuario){
 		Gson gson = new Gson();
 		Usuario n_Usuario = new Usuario(usuario.getNombre());
 		UsuarioDAO dao = new UsuarioDAO();
-		dao.ingresarUsuario(n_Usuario);
-		return new ResponseEntity<String>(HttpStatus.OK);
+		dao.ingresarUsuario(n_Usuario);	
+		
+		
+		
+		
+		
 	}
 	
 

@@ -1,6 +1,5 @@
 package cl.springmvcangular.bo;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -27,6 +26,10 @@ public class Usuario {
 	@Column(name = "NOMBRE", nullable = false, length = 20)
 	private String nombre;
 	
+	@Column(name = "CONTRASENA", nullable = false, length = 20)
+	private String contrasena;
+	
+	
 	@Temporal(TemporalType.TIMESTAMP )
 	@Column(name = "FECHAINGRESO", nullable = false, length = 20)
 	private Date fechaIngreso;
@@ -34,10 +37,15 @@ public class Usuario {
 	
 	public Usuario(){}
 	
+	public Usuario(String nombre,String contrasena){
+		this.nombre= nombre;
+		this.contrasena = contrasena;
+		this.fechaIngreso = new java.sql.Timestamp(new Date().getTime()); 
+	}
+	
 	public Usuario(String nombre){
 		this.nombre= nombre;
-		Date today = new Date();
-		this.fechaIngreso = new java.sql.Timestamp(today.getTime()); 
+		this.fechaIngreso = new java.sql.Timestamp(new Date().getTime()); 
 	}
 	
 	
@@ -64,6 +72,14 @@ public class Usuario {
 
 	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
+	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	

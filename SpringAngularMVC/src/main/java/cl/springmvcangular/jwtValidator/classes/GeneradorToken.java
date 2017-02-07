@@ -3,11 +3,14 @@ package cl.springmvcangular.jwtValidator.classes;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+@Service
 public class GeneradorToken {
 	final private String secretString = "gxcj1732";
 	
@@ -47,7 +50,7 @@ public class GeneradorToken {
 	    System.out.println("Issuer: " + claims.getIssuer());
 	    System.out.println("Expiration: " + claims.getExpiration());
 	    
-	    
+	    return true;
 	} 
 	
 }

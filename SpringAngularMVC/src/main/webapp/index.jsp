@@ -8,58 +8,10 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
 	<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 	<script src="<c:url value="/resources/js/angular.min.js" />"></script>
-	<script>
-		$(function() {
-		    $('#login-form-link').click(function(e) {
-		    	$("#login-form").delay(100).fadeIn(100);
-		 		$("#register-form").fadeOut(100);
-				$('#register-form-link').removeClass('active');
-				$(this).addClass('active');
-				e.preventDefault();
-			});
-			$('#register-form-link').click(function(e) {
-				$("#register-form").delay(100).fadeIn(100);
-		 		$("#login-form").fadeOut(100);
-				$('#login-form-link').removeClass('active');
-				$(this).addClass('active');
-				e.preventDefault();
-			});
-		});
-
-		
-		angular.module('demo',[]).controller("Login",function($scope,$http){
-			$scope.txtUsuarioLogin = {
-					text : ""
-			}
-			$scope.txtPasswordLogin = {
-					text : ""
-			}
-			
-			$scope.txtUsuarioRegistro = {
-					text : ""
-			}
-			
-			$scope.txtEmailRegistro = {
-					text : ""
-			}
-			
-			$scope.txtPasswordRegistro = {
-					text : ""
-			}
-			
-			$scope.ingresarUsuario = function(){
-				console.log($scope.txtUsuarioLogin.text);
-				console.log($scope.txtPasswordLogin.text);
-			}
-			
-			$scope.registrarUsuario = function(){
-				console.log($scope.txtUsuarioRegistro.text);
-				console.log($scope.txtEmailRegistro.text);
-				console.log($scope.txtPasswordRegistro.text);
-			}
-			
-		});
-	</script>
+	<script src="<c:url value="/resources/js/angular-cookies.min.js" />"></script>
+	<script>var ctx = "${pageContext.request.contextPath}"</script>
+	<script src="<c:url value="/resources/js/controller/login.js" />"></script>
+	
 </head>
 <body>
 
@@ -115,6 +67,9 @@
             </div>
           </div>
         </div>
+        <div class="alert alert-danger" ng-show="reasonToShow">
+			  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+		</div>
       </div>
     </div>
   </div>

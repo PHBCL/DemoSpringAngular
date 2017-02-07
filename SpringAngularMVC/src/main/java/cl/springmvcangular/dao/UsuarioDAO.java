@@ -6,9 +6,25 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import cl.springmvcangular.bo.Usuario;
+import cl.springmvcangular.dto.UsuarioDTO;
 import cl.springmvcangular.factoring.HibernateFactoring;
 
 public class UsuarioDAO {
+	
+	public Usuario validarUsuario(UsuarioDTO usuarioReq){
+		Session session =  HibernateFactoring.getSessionFactory().openSession();
+		try{
+		Query query = session.createQuery("from Usuario where nombre=:nombre and contrasena=:contrasena ");
+		query.setString("nombre", usuarioReq.getUsuario());
+		query.setString("contrasena", usuarioReq.getContrasena());
+		return (Usuario)query.list().get(0);
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+	
+	
 	
 	public void ingresarUsuario(Usuario usuario){
 		Session session =  HibernateFactoring.getSessionFactory().openSession();
